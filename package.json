@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\" \"npm run backend\"",
+    "server": "cd server && npm start",
+    "client": "cd client && PORT=3001 npm start",
+    "backend": "cd backend && flask --app rag_api.py run --port=5001"
+  }
+}
+

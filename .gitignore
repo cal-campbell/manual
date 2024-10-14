@@ -1,0 +1,20 @@
+# Node.js dependencies (React and Express)
+client/node_modules/
+server/node_modules/
+
+# Python virtual environment
+venv/
+
+# Environment variables (for both Node.js and Python)
+server/.env
+.env             # Add this if you have a .env file at the root or for Python
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+
+# Bytecode (Python compiled files)
+__pycache__/
+*.pyc
