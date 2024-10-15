@@ -43,20 +43,25 @@ app.post('/api/chatbot', async (req, res) => {
 });
 
 // Function to call the Flask RAG API
+// Function to call the Flask RAG API
 async function getChatbotResponse(message) {
     try {
+      // Use an environment variable for the Flask API URL
+      const flaskApiUrl = process.env.FLASK_API_URL || 'http://localhost:5001/api/rag';
+      
       // Call the Flask RAG API
-      const response = await axios.post('http://localhost:5001/api/rag', {
+      const response = await axios.post(`${flaskApiUrl}`, {
         message: message,
       });
-  
+
       // Return the response from the Flask API
       return response.data.response;
     } catch (error) {
       console.error('Error calling RAG API:', error);
       throw new Error('Failed to fetch response from RAG API');
     }
-  }
+}
+
 
 // Start the Express server
 app.listen(port, () => {

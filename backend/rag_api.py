@@ -1,5 +1,3 @@
-# backend/rag_api.py - Exposes the RAG pipeline as an API endpoint to the express server
-
 from flask import Flask, request, jsonify
 from extract_text import extract_text_from_pdf
 from embedding_generation import generate_embeddings
@@ -48,5 +46,9 @@ def get_rag_response():
         print(f"Error: {e}")
         return jsonify({"error": str(e)}), 500
 
+# Only for local development
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True)  # Run the Flask app on port 5001 in debug mode
+    # Get port from environment variables (use Heroku's port when deployed)
+    port = int(os.environ.get('PORT', 5001))  # Default to 5001 for local development
+    app.run(host='0.0.0.0', port=port, debug=True)
+
