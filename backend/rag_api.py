@@ -14,7 +14,7 @@ print("Starting Flask RAG API...")
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 # Step 1: Load the PDF and extract text
-pdf_path = "data/daikin.pdf"
+pdf_path = "https://manual-app.s3.eu-north-1.amazonaws.com/daikin.pdf"  # Use the S3 URL here
 print(f"Loading PDF from: {pdf_path}")
 manual_text = extract_text_from_pdf(pdf_path)
 
