@@ -6,11 +6,14 @@ require('dotenv').config(); // Load environment variables from .env
 
 // Create an instance of express
 const app = express();
-const port = process.env.PORT || 3000; // Use PORT from .env or default to 3000
+const port = process.env.PORT || 80; // Use PORT from .env or default to 3000
 
 // Use CORS to allow requests from the frontend
 app.use(cors());
 app.use(express.json());
+
+console.log('Loaded PORT:', process.env.PORT);
+
 
 // Setup PostgreSQL connection using environment variables
 const pool = new Pool({

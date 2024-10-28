@@ -14,7 +14,7 @@ function App() {
       
       // Send message to the backend
       try {
-        const response = await axios.post('http://localhost:3000/api/chatbot', { message });
+        const response = await axios.post('http://localhost:80/api/chatbot', { message });
         const botResponse = response.data.response;
         
         // Add bot response to chat log
