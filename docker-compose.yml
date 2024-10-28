@@ -1,23 +1,15 @@
 version: '3.8'
 
 services:
-  client:
+  app:
     build:
-      context: ./client
+      context: .
     ports:
-      - "3000:3000"
+      - "3000:3000"   # React frontend
+      - "80:80"       # Node server
+      - "5001:5000"   # Flask backend
     env_file:
-      - .env  # Loads environment variables if any are needed in frontend
-
-  server:
-    build:
-      context: ./server
-    ports:
-      - "80:80"
-    env_file:
-      - .env  # Loads environment variables like PostgreSQL credentials
-    depends_on:
-      - flaskapp
+      - .env
     environment:
       - PGUSER=${PGUSER}
       - PGHOST=${PGHOST}
@@ -25,13 +17,4 @@ services:
       - PGDATABASE=${PGDATABASE}
       - PGPORT=${PGPORT}
       - PORT=${PORT}
-
-  flaskapp:
-    build:
-      context: ./backend
-    ports:
-      - "5001:5001"
-    env_file:
-      - .env  # Loads OpenAI API key for Flask app
-    environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
